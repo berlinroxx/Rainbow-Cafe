@@ -1,0 +1,2095 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Rainbow Cafe☕</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #fffaf5;
+            color: #3e2723;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 70px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 0 8%;
+            background: rgba(62, 39, 35, 0.97);
+
+            z-index: 1000;
+        }
+
+        .logo {
+            color: #fff;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #d7a86e;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #d7a86e;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+
+            padding: 100px 20px 50px;
+
+            background:
+                linear-gradient(
+                    rgba(40, 25, 20, 0.7),
+                    rgba(40, 25, 20, 0.7)
+                ),
+                url("https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1600&q=80");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            max-width: 750px;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 65px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #d7a86e;
+        }
+
+        .hero p {
+            font-size: 19px;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            padding: 14px 30px;
+
+            background: #d7a86e;
+            color: #3e2723;
+
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 30px;
+
+            transition: 0.3s;
+        }
+
+        .hero-btn:hover {
+            transform: translateY(-3px);
+            background: white;
+        }
+
+        /* =========================
+           GENERAL SECTION
+        ========================= */
+
+        section {
+            padding: 100px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #795548;
+        }
+
+        /* =========================
+           MENU
+        ========================= */
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .menu-card {
+            background: white;
+            border-radius: 18px;
+            overflow: hidden;
+
+            box-shadow: 0 8px 25px rgba(62, 39, 35, 0.1);
+
+            transition: 0.3s;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(62, 39, 35, 0.18);
+        }
+
+        .menu-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .menu-info {
+            padding: 22px;
+        }
+
+        .menu-info h3 {
+            margin-bottom: 10px;
+            font-size: 22px;
+        }
+
+        .menu-info p {
+            color: #795548;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            color: #a0522d;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .order-btn {
+            width: 100%;
+            border: none;
+            padding: 12px;
+
+            background: #3e2723;
+            color: white;
+
+            border-radius: 10px;
+            cursor: pointer;
+
+            font-size: 15px;
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .order-btn:hover {
+            background: #d7a86e;
+            color: #3e2723;
+        }
+
+        /* =========================
+           ABOUT
+        ========================= */
+
+        .about {
+            background: #f3e9df;
+        }
+
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-image {
+            width: 100%;
+            border-radius: 20px;
+        }
+
+        .about-text h2 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            line-height: 1.8;
+            color: #5d4037;
+            margin-bottom: 15px;
+        }
+
+        /* =========================
+           REVIEWS
+        ========================= */
+
+        .reviews {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .review-card {
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+
+            box-shadow: 0 8px 25px rgba(62, 39, 35, 0.1);
+        }
+
+        .stars {
+            color: #d7a86e;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .review-card p {
+            line-height: 1.7;
+            color: #5d4037;
+            margin-bottom: 20px;
+        }
+
+        .review-card h4 {
+            color: #3e2723;
+        }
+
+        /* =========================
+           LOCATION
+        ========================= */
+
+        .location {
+            background: #3e2723;
+            color: white;
+            text-align: center;
+        }
+
+        .location h2 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .location p {
+            margin-bottom: 10px;
+            color: #e5d5c5;
+        }
+
+        /* =========================
+           CONTACT
+        ========================= */
+
+        .contact-container {
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+
+            border: 1px solid #d7ccc8;
+            border-radius: 10px;
+
+            font-size: 15px;
+            outline: none;
+        }
+
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .contact-form button {
+            border: none;
+            padding: 15px;
+
+            background: #3e2723;
+            color: white;
+
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .contact-form button:hover {
+            background: #d7a86e;
+            color: #3e2723;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #241512;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        footer p {
+            color: #cbb9ad;
+        }
+
+        /* =========================
+           ORDER MODAL
+        ========================= */
+
+        .order-overlay {
+            position: fixed;
+            inset: 0;
+
+            background: rgba(0, 0, 0, 0.65);
+
+            display: none;
+            justify-content: center;
+            align-items: center;
+
+            padding: 20px;
+            z-index: 2000;
+        }
+
+        .order-overlay.active {
+            display: flex;
+        }
+
+        .order-modal {
+            background: white;
+
+            width: 100%;
+            max-width: 500px;
+
+            max-height: 90vh;
+            overflow-y: auto;
+
+            border-radius: 20px;
+            padding: 30px;
+
+            animation: popup 0.25s ease;
+        }
+
+        @keyframes popup {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            margin-bottom: 25px;
+        }
+
+        .modal-header h2 {
+            font-size: 28px;
+        }
+
+        .close-modal {
+            border: none;
+            background: none;
+
+            font-size: 30px;
+            cursor: pointer;
+
+            color: #795548;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 13px;
+
+            border: 1px solid #d7ccc8;
+            border-radius: 10px;
+
+            outline: none;
+            font-size: 15px;
+        }
+
+        .form-group textarea {
+            height: 90px;
+            resize: vertical;
+        }
+
+        .quantity-box {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .quantity-box button {
+            width: 38px;
+            height: 38px;
+
+            border: none;
+            border-radius: 8px;
+
+            background: #3e2723;
+            color: white;
+
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .quantity-box span {
+            min-width: 30px;
+            text-align: center;
+
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .total-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            margin: 20px 0;
+            padding: 18px;
+
+            background: #f3e9df;
+            border-radius: 12px;
+        }
+
+        .total-box strong {
+            font-size: 22px;
+            color: #a0522d;
+        }
+
+        .confirm-order {
+            width: 100%;
+            padding: 14px;
+
+            border: none;
+            border-radius: 10px;
+
+            background: #3e2723;
+            color: white;
+
+            font-weight: bold;
+            font-size: 16px;
+
+            cursor: pointer;
+        }
+
+        .confirm-order:hover {
+            background: #d7a86e;
+            color: #3e2723;
+        }
+
+        /* =========================
+           RECEIPT
+        ========================= */
+
+        .receipt-overlay {
+            position: fixed;
+            inset: 0;
+
+            background: rgba(0, 0, 0, 0.7);
+
+            display: none;
+            justify-content: center;
+            align-items: center;
+
+            padding: 20px;
+            z-index: 3000;
+        }
+
+        .receipt-overlay.active {
+            display: flex;
+        }
+
+        .receipt {
+            width: 100%;
+            max-width: 400px;
+
+            max-height: 90vh;
+            overflow-y: auto;
+
+            background: white;
+            border-radius: 15px;
+
+            padding: 25px;
+
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+
+            animation: receiptPopup 0.3s ease;
+        }
+
+        @keyframes receiptPopup {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .receipt-header {
+            text-align: center;
+
+            padding-bottom: 20px;
+            border-bottom: 1px dashed #aaa;
+        }
+
+        .receipt-logo {
+            font-size: 45px;
+            margin-bottom: 5px;
+        }
+
+        .receipt-header h2 {
+            margin-bottom: 7px;
+        }
+
+        .receipt-header p {
+            color: #777;
+            font-size: 13px;
+            margin: 3px;
+        }
+
+        .receipt-success {
+            text-align: center;
+
+            margin: 20px 0;
+
+            padding: 10px;
+
+            border-radius: 8px;
+
+            background: #e8f5e9;
+            color: #2e7d32;
+
+            font-weight: bold;
+        }
+
+        .receipt-info {
+            border-bottom: 1px dashed #aaa;
+            padding-bottom: 15px;
+        }
+
+        .receipt-row {
+            display: flex;
+            justify-content: space-between;
+
+            margin-bottom: 8px;
+
+            font-size: 14px;
+        }
+
+        .receipt-row span:first-child {
+            color: #777;
+        }
+
+        .receipt-item {
+            padding: 18px 0;
+
+            border-bottom: 1px dashed #aaa;
+        }
+
+        .receipt-item-name {
+            font-weight: bold;
+            font-size: 17px;
+
+            margin-bottom: 10px;
+        }
+
+        .receipt-item-detail {
+            display: flex;
+            justify-content: space-between;
+
+            color: #666;
+            font-size: 14px;
+        }
+
+        .receipt-item-detail strong {
+            color: #3e2723;
+        }
+
+        .receipt-note {
+            margin-top: 15px;
+            padding: 10px;
+
+            background: #f8f4f0;
+            border-radius: 8px;
+
+            font-size: 13px;
+            color: #666;
+        }
+
+        .receipt-total {
+            display: flex;
+            justify-content: space-between;
+
+            padding: 20px 0;
+
+            font-size: 18px;
+        }
+
+        .receipt-total strong {
+            font-size: 22px;
+            color: #a0522d;
+        }
+
+        .receipt-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .receipt-actions button {
+            flex: 1;
+
+            padding: 12px;
+
+            border: none;
+            border-radius: 9px;
+
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .close-receipt {
+            background: #eee;
+            color: #333;
+        }
+
+        .print-receipt {
+            background: #3e2723;
+            color: white;
+        }
+
+        .print-receipt:hover {
+            background: #d7a86e;
+            color: #3e2723;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 850px) {
+
+            nav {
+                padding: 0 5%;
+            }
+
+            nav ul {
+                gap: 12px;
+            }
+
+            nav ul li a {
+                font-size: 13px;
+            }
+
+            .hero h1 {
+                font-size: 45px;
+            }
+
+            .menu-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .reviews {
+                grid-template-columns: 1fr;
+            }
+
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            nav {
+                height: auto;
+                min-height: 65px;
+
+                flex-direction: column;
+                gap: 10px;
+
+                padding: 12px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero {
+                padding-top: 150px;
+            }
+
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            section {
+                padding: 70px 5%;
+            }
+
+            .section-title h2 {
+                font-size: 32px;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-text h2 {
+                font-size: 32px;
+            }
+
+            .order-modal {
+                padding: 22px;
+            }
+        }
+
+        /* =========================
+           PRINT RECEIPT
+        ========================= */
+
+        @media print {
+
+            body * {
+                visibility: hidden;
+            }
+
+            .receipt-overlay,
+            .receipt-overlay * {
+                visibility: visible;
+            }
+
+            .receipt-overlay {
+                position: absolute;
+
+                display: block;
+
+                background: white;
+                padding: 0;
+            }
+
+            .receipt {
+                max-width: 100%;
+                box-shadow: none;
+                border-radius: 0;
+            }
+
+            .receipt-actions {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVBAR
+    ========================= -->
+
+    <nav>
+        <div class="logo">
+            Rainbow<span>Cafe</span> ☕
+        </div>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#location">Location</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <h1>
+                Fresh Coffee,
+                <span>Happy Day.</span>
+            </h1>
+
+            <p>
+                Nikmati kopi terbaik yang dibuat dari biji kopi pilihan
+                dan diracik dengan penuh cinta untuk menemani harimu.
+            </p>
+
+            <a href="#menu" class="hero-btn">
+                Lihat Menu ☕
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         MENU
+    ========================= -->
+
+    <section id="menu">
+
+        <div class="section-title">
+            <h2>Menu Kami</h2>
+            <p>Pilihan minuman dan makanan favorit pelanggan.</p>
+        </div>
+
+        <div class="menu-grid">
+
+            <!-- Espresso -->
+
+            <div class="menu-card">
+
+                <img
+                    class="menu-image"
+                    src="https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?auto=format&fit=crop&w=800&q=80"
+                    alt="Classic Espresso"
+                >
+
+                <div class="menu-info">
+
+                    <h3>Classic Espresso</h3>
+
+                    <p>
+                        Espresso klasik dengan rasa kuat dan aroma khas.
+                    </p>
+
+                    <div class="price">
+                        Rp 25.000
+                    </div>
+
+                    <button
+                        class="order-btn"
+                        onclick="order('Classic Espresso')"
+                    >
+                        Order
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Latte -->
+
+            <div class="menu-card">
+
+                <img
+                    class="menu-image"
+                    src="https://images.unsplash.com/photo-1561882468-9110e03e0f78?auto=format&fit=crop&w=800&q=80"
+                    alt="Cafe Latte"
+                >
+
+                <div class="menu-info">
+
+                    <h3>Cafe Latte</h3>
+
+                    <p>
+                        Espresso lembut dengan susu creamy dan foam.
+                    </p>
+
+                    <div class="price">
+                        Rp 32.000
+                    </div>
+
+                    <button
+                        class="order-btn"
+                        onclick="order('Cafe Latte')"
+                    >
+                        Order
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Iced Coffee -->
+
+            <div class="menu-card">
+
+                <img
+                    class="menu-image"
+                    src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=80"
+                    alt="Iced Coffee"
+                >
+
+                <div class="menu-info">
+
+                    <h3>Iced Coffee</h3>
+
+                    <p>
+                        Kopi dingin segar dengan rasa yang ringan.
+                    </p>
+
+                    <div class="price">
+                        Rp 30.000
+                    </div>
+
+                    <button
+                        class="order-btn"
+                        onclick="order('Iced Coffee')"
+                    >
+                        Order
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Mocha -->
+
+            <div class="menu-card">
+
+                <img
+                    class="menu-image"
+                    src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80"
+                    alt="Mocha"
+                >
+
+                <div class="menu-info">
+
+                    <h3>Mocha</h3>
+
+                    <p>
+                        Perpaduan espresso, cokelat dan susu.
+                    </p>
+
+                    <div class="price">
+                        Rp 35.000
+                    </div>
+
+                    <button
+                        class="order-btn"
+                        onclick="order('Mocha')"
+                    >
+                        Order
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Matcha -->
+
+            <div class="menu-card">
+
+                <img
+                    class="menu-image"
+                    src="https://images.unsplash.com/photo-1515823064-d6e0c04616a7?auto=format&fit=crop&w=800&q=80"
+                    alt="Matcha Latte"
+                >
+
+                <div class="menu-info">
+
+                    <h3>Matcha Latte</h3>
+
+                    <p>
+                        Matcha premium dengan susu creamy.
+                    </p>
+
+                    <div class="price">
+                        Rp 34.000
+                    </div>
+
+                    <button
+                        class="order-btn"
+                        onclick="order('Matcha Latte')"
+                    >
+                        Order
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Croissant -->
+
+            <div class="menu-card">
+
+                <img
+                    class="menu-image"
+                    src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=800&q=80"
+                    alt="Butter Croissant"
+                >
+
+                <div class="menu-info">
+
+                    <h3>Butter Croissant</h3>
+
+                    <p>
+                        Croissant renyah dengan aroma butter.
+                    </p>
+
+                    <div class="price">
+                        Rp 28.000
+                    </div>
+
+                    <button
+                        class="order-btn"
+                        onclick="order('Butter Croissant')"
+                    >
+                        Order
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         ABOUT
+    ========================= -->
+
+    <section class="about" id="about">
+
+        <div class="about-container">
+
+            <img
+                class="about-image"
+                src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=1000&q=80"
+                alt="Coffee House"
+            >
+
+            <div class="about-text">
+
+                <h2>Tentang Coffee House</h2>
+
+                <p>
+                    Coffee House hadir untuk memberikan pengalaman menikmati
+                    kopi yang nyaman, hangat dan berkualitas.
+                </p>
+
+                <p>
+                    Kami menggunakan biji kopi pilihan yang diracik oleh
+                    barista berpengalaman untuk menghasilkan rasa terbaik
+                    dalam setiap cangkir.
+                </p>
+
+                <p>
+                    Datang, duduk, dan nikmati waktu terbaikmu bersama
+                    Coffee House.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         REVIEWS
+    ========================= -->
+
+    <section id="reviews">
+
+        <div class="section-title">
+
+            <h2>Customer Reviews</h2>
+
+            <p>
+                Apa kata pelanggan kami?
+            </p>
+
+        </div>
+
+        <div class="reviews">
+
+            <div class="review-card">
+
+                <div class="stars">
+                    ★★★★★
+                </div>
+
+                <p>
+                    "Kopinya enak banget dan tempatnya nyaman.
+                    Cocok untuk nongkrong maupun kerja."
+                </p>
+
+                <h4>— Andi</h4>
+
+            </div>
+
+
+            <div class="review-card">
+
+                <div class="stars">
+                    ★★★★★
+                </div>
+
+                <p>
+                    "Cafe Latte-nya creamy dan rasanya pas.
+                    Bakal balik lagi!"
+                </p>
+
+                <h4>— Sinta</h4>
+
+            </div>
+
+
+            <div class="review-card">
+
+                <div class="stars">
+                    ★★★★★
+                </div>
+
+                <p>
+                    "Pelayanannya ramah, tempat bersih dan
+                    kopinya mantap."
+                </p>
+
+                <h4>— Rizky</h4>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         LOCATION
+    ========================= -->
+
+    <section class="location" id="location">
+
+        <h2>Visit Our Coffee House ☕</h2>
+
+        <p>
+            📍 Jl. Coffee Street No. 12
+        </p>
+
+        <p>
+            🕐 Senin — Minggu | 07:00 — 22:00
+        </p>
+
+        <p>
+            📞 0812-3456-7890
+        </p>
+
+    </section>
+
+
+    <!-- =========================
+         CONTACT
+    ========================= -->
+
+    <section id="contact">
+
+        <div class="section-title">
+
+            <h2>Contact Us</h2>
+
+            <p>
+                Ada pertanyaan? Kirim pesan kepada kami.
+            </p>
+
+        </div>
+
+        <div class="contact-container">
+
+            <form
+                class="contact-form"
+                onsubmit="sendMessage(event)"
+            >
+
+                <input
+                    type="text"
+                    placeholder="Nama"
+                    required
+                >
+
+                <input
+                    type="email"
+                    placeholder="Email"
+                    required
+                >
+
+                <textarea
+                    placeholder="Pesan..."
+                    required
+                ></textarea>
+
+                <button type="submit">
+                    Kirim Pesan
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <p>
+            © 2026 Coffee House. All Rights Reserved. ☕
+        </p>
+
+    </footer>
+
+
+    <!-- =========================
+         ORDER MODAL
+    ========================= -->
+
+    <div
+        class="order-overlay"
+        id="orderOverlay"
+    >
+
+        <div class="order-modal">
+
+            <div class="modal-header">
+
+                <h2>Order Coffee ☕</h2>
+
+                <button
+                    class="close-modal"
+                    onclick="closeOrder()"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <form
+                id="orderForm"
+                onsubmit="submitOrder(event)"
+            >
+
+                <div class="form-group">
+
+                    <label>
+                        Nama
+                    </label>
+
+                    <input
+                        type="text"
+                        id="customerName"
+                        placeholder="Masukkan nama"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Menu
+                    </label>
+
+                    <select
+                        id="menuSelect"
+                        onchange="updateTotal()"
+                        required
+                    >
+
+                        <option value="">
+                            Pilih menu
+                        </option>
+
+                        <option value="Classic Espresso">
+                            Classic Espresso
+                        </option>
+
+                        <option value="Cafe Latte">
+                            Cafe Latte
+                        </option>
+
+                        <option value="Iced Coffee">
+                            Iced Coffee
+                        </option>
+
+                        <option value="Mocha">
+                            Mocha
+                        </option>
+
+                        <option value="Matcha Latte">
+                            Matcha Latte
+                        </option>
+
+                        <option value="Butter Croissant">
+                            Butter Croissant
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Jumlah
+                    </label>
+
+                    <div class="quantity-box">
+
+                        <button
+                            type="button"
+                            onclick="changeQuantity(-1)"
+                        >
+                            −
+                        </button>
+
+                        <span id="quantity">
+                            1
+                        </span>
+
+                        <button
+                            type="button"
+                            onclick="changeQuantity(1)"
+                        >
+                            +
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Catatan
+                    </label>
+
+                    <textarea
+                        id="orderNote"
+                        placeholder="Contoh: Less sugar, tanpa es..."
+                    ></textarea>
+
+                </div>
+
+
+                <div class="total-box">
+
+                    <span>
+                        Total
+                    </span>
+
+                    <strong id="totalPrice">
+                        Rp 0
+                    </strong>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="confirm-order"
+                >
+                    Konfirmasi Order
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         RECEIPT
+    ========================= -->
+
+    <div
+        class="receipt-overlay"
+        id="receiptOverlay"
+    >
+
+        <div
+            class="receipt"
+            id="receipt"
+        >
+
+            <div class="receipt-header">
+
+                <div class="receipt-logo">
+                    ☕
+                </div>
+
+                <h2>
+                    Coffee House
+                </h2>
+
+                <p>
+                    Jl. Coffee Street No. 12
+                </p>
+
+                <p>
+                    07:00 — 22:00
+                </p>
+
+            </div>
+
+
+            <div class="receipt-success">
+
+                ✓ ORDER BERHASIL
+
+            </div>
+
+
+            <div class="receipt-info">
+
+                <div class="receipt-row">
+
+                    <span>
+                        No. Struk
+                    </span>
+
+                    <span id="receiptNumber">
+                        -
+                    </span>
+
+                </div>
+
+
+                <div class="receipt-row">
+
+                    <span>
+                        Tanggal
+                    </span>
+
+                    <span id="receiptDate">
+                        -
+                    </span>
+
+                </div>
+
+
+                <div class="receipt-row">
+
+                    <span>
+                        Nama
+                    </span>
+
+                    <span id="receiptName">
+                        -
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="receipt-item">
+
+                <div
+                    class="receipt-item-name"
+                    id="receiptItem"
+                >
+                    -
+                </div>
+
+
+                <div class="receipt-item-detail">
+
+                    <span>
+
+                        <span id="receiptQuantity">
+                            1
+                        </span>
+
+                        ×
+
+                        <span id="receiptPrice">
+                            Rp 0
+                        </span>
+
+                    </span>
+
+
+                    <strong id="receiptSubtotal">
+                        Rp 0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="receipt-note"
+                id="receiptNote"
+                style="display:none;"
+            ></div>
+
+
+            <div class="receipt-total">
+
+                <span>
+                    TOTAL
+                </span>
+
+                <strong id="receiptTotal">
+                    Rp 0
+                </strong>
+
+            </div>
+
+
+            <div class="receipt-actions">
+
+                <button
+                    type="button"
+                    class="close-receipt"
+                    onclick="closeReceipt()"
+                >
+                    Tutup
+                </button>
+
+                <button
+                    type="button"
+                    class="print-receipt"
+                    onclick="printReceipt()"
+                >
+                    🖨 Cetak Struk
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+        /* =========================
+           PRICE DATA
+        ========================= */
+
+        const prices = {
+
+            "Classic Espresso": 25000,
+
+            "Cafe Latte": 32000,
+
+            "Iced Coffee": 30000,
+
+            "Mocha": 35000,
+
+            "Matcha Latte": 34000,
+
+            "Butter Croissant": 28000
+
+        };
+
+
+        /* =========================
+           FORMAT RUPIAH
+        ========================= */
+
+        function formatRupiah(number) {
+
+            return new Intl.NumberFormat(
+                "id-ID",
+                {
+                    style: "currency",
+                    currency: "IDR",
+                    minimumFractionDigits: 0
+                }
+            ).format(number);
+
+        }
+
+
+        /* =========================
+           OPEN ORDER
+        ========================= */
+
+        function order(item) {
+
+            const overlay =
+                document.getElementById("orderOverlay");
+
+            const select =
+                document.getElementById("menuSelect");
+
+            const quantity =
+                document.getElementById("quantity");
+
+            select.value = item;
+
+            quantity.textContent = "1";
+
+            updateTotal();
+
+            overlay.classList.add("active");
+
+            setTimeout(() => {
+
+                document
+                    .getElementById("customerName")
+                    .focus();
+
+            }, 100);
+
+        }
+
+
+        /* =========================
+           CLOSE ORDER
+        ========================= */
+
+        function closeOrder() {
+
+            document
+                .getElementById("orderOverlay")
+                .classList.remove("active");
+
+        }
+
+
+        /* =========================
+           CHANGE QUANTITY
+        ========================= */
+
+        function changeQuantity(amount) {
+
+            const quantityElement =
+                document.getElementById("quantity");
+
+            let quantity =
+                parseInt(quantityElement.textContent);
+
+            quantity += amount;
+
+            if (quantity < 1) {
+                quantity = 1;
+            }
+
+            if (quantity > 20) {
+                quantity = 20;
+            }
+
+            quantityElement.textContent =
+                quantity;
+
+            updateTotal();
+
+        }
+
+
+        /* =========================
+           UPDATE TOTAL
+        ========================= */
+
+        function updateTotal() {
+
+            const item =
+                document.getElementById("menuSelect").value;
+
+            const quantity =
+                parseInt(
+                    document.getElementById("quantity").textContent
+                );
+
+            const price =
+                prices[item] || 0;
+
+            const total =
+                price * quantity;
+
+            document
+                .getElementById("totalPrice")
+                .textContent =
+                formatRupiah(total);
+
+        }
+
+
+        /* =========================
+           SUBMIT ORDER
+        ========================= */
+
+        function submitOrder(event) {
+
+            event.preventDefault();
+
+
+            const name =
+                document
+                    .getElementById("customerName")
+                    .value
+                    .trim();
+
+
+            const item =
+                document
+                    .getElementById("menuSelect")
+                    .value;
+
+
+            const quantity =
+                parseInt(
+                    document
+                        .getElementById("quantity")
+                        .textContent
+                );
+
+
+            const note =
+                document
+                    .getElementById("orderNote")
+                    .value
+                    .trim();
+
+
+            const price =
+                prices[item] || 0;
+
+
+            const total =
+                price * quantity;
+
+
+            /* Nomor struk */
+
+            const receiptNumber =
+                "CH-" +
+                Date.now()
+                    .toString()
+                    .slice(-6);
+
+
+            /* Tanggal */
+
+            const now =
+                new Date();
+
+
+            const date =
+                now.toLocaleDateString(
+                    "id-ID",
+                    {
+                        day: "2-digit",
+                        month: "2-digit",
+                        year: "numeric"
+                    }
+                );
+
+
+            const time =
+                now.toLocaleTimeString(
+                    "id-ID",
+                    {
+                        hour: "2-digit",
+                        minute: "2-digit"
+                    }
+                );
+
+
+            /* Isi struk */
+
+            document
+                .getElementById("receiptNumber")
+                .textContent =
+                receiptNumber;
+
+
+            document
+                .getElementById("receiptDate")
+                .textContent =
+                date + " • " + time;
+
+
+            document
+                .getElementById("receiptName")
+                .textContent =
+                name;
+
+
+            document
+                .getElementById("receiptItem")
+                .textContent =
+                item;
+
+
+            document
+                .getElementById("receiptQuantity")
+                .textContent =
+                quantity;
+
+
+            document
+                .getElementById("receiptPrice")
+                .textContent =
+                formatRupiah(price);
+
+
+            document
+                .getElementById("receiptSubtotal")
+                .textContent =
+                formatRupiah(total);
+
+
+            document
+                .getElementById("receiptTotal")
+                .textContent =
+                formatRupiah(total);
+
+
+            /* Catatan */
+
+            const receiptNote =
+                document.getElementById("receiptNote");
+
+
+            if (note) {
+
+                receiptNote.style.display =
+                    "block";
+
+                receiptNote.textContent =
+                    "Catatan: " + note;
+
+            } else {
+
+                receiptNote.style.display =
+                    "none";
+
+                receiptNote.textContent =
+                    "";
+
+            }
+
+
+            /* Tutup order */
+
+            closeOrder();
+
+
+            /* Tampilkan struk */
+
+            document
+                .getElementById("receiptOverlay")
+                .classList.add("active");
+
+
+            /* Reset form */
+
+            document
+                .getElementById("orderForm")
+                .reset();
+
+
+            document
+                .getElementById("quantity")
+                .textContent =
+                "1";
+
+
+            updateTotal();
+
+        }
+
+
+        /* =========================
+           CLOSE RECEIPT
+        ========================= */
+
+        function closeReceipt() {
+
+            document
+                .getElementById("receiptOverlay")
+                .classList.remove("active");
+
+        }
+
+
+        /* =========================
+           PRINT RECEIPT
+        ========================= */
+
+        function printReceipt() {
+
+            window.print();
+
+        }
+
+
+        /* =========================
+           CONTACT FORM
+        ========================= */
+
+        function sendMessage(event) {
+
+            event.preventDefault();
+
+            alert(
+                "Terima kasih! Pesan kamu berhasil dikirim. ☕"
+            );
+
+            event.target.reset();
+
+        }
+
+
+        /* =========================
+           CLICK OUTSIDE MODAL
+        ========================= */
+
+        document
+            .getElementById("orderOverlay")
+            .addEventListener(
+                "click",
+                function(event) {
+
+                    if (
+                        event.target === this
+                    ) {
+
+                        closeOrder();
+
+                    }
+
+                }
+            );
+
+
+        document
+            .getElementById("receiptOverlay")
+            .addEventListener(
+                "click",
+                function(event) {
+
+                    if (
+                        event.target === this
+                    ) {
+
+                        closeReceipt();
+
+                    }
+
+                }
+            );
+
+
+        /* =========================
+           ESCAPE BUTTON
+        ========================= */
+
+        document.addEventListener(
+            "keydown",
+            function(event) {
+
+                if (
+                    event.key === "Escape"
+                ) {
+
+                    closeOrder();
+
+                    closeReceipt();
+
+                }
+
+            }
+        );
+
+    </script>
+
+</body>
+</html>
+```
